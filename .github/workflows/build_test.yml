@@ -40,6 +40,9 @@ jobs:
                 push: true
                 tags: sh1zik/django_hp:latest
 
-
+  Build_dependends:
+    needs: docker
+    uses: ./.github/workflows/k8s_deploy.yml 
+    secrets: inherit
 
 

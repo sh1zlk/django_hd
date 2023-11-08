@@ -1,0 +1,19 @@
+name: "Deploy app in k8s cluster"
+on:
+  workflow_dispatch:
+  workflow_call:
+
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+      steps:
+    
+      - uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          tenat-id:  ${{ secrets.TENANT}}
+          subscription-id: ${{ secrets.PASSWORD }}
+        
+        run: az aks get-credentials --resource-group django_hp --name django-helpdesk && echo $(cat ~/.kube/config)
