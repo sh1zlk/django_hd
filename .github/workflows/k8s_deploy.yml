@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: azure/login@v1
         with:
-          client-id: ${{ secrets.APP_ID }}
+          client-id: ${{ secrets.ID }}
           tenat-id:  ${{ secrets.TENANT}}
-          subscription-id: ${{ secrets.PASSWORD }}
+          subscription-id: ${{ secrets.SUBSCRPTION }}
 
       - run: az aks get-credentials --resource-group django_hp --name django-helpdesk && echo $(cat ~/.kube/config)
