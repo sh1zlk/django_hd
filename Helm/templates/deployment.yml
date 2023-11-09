@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my_django_hp
+  namespace: django_hp
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: django-hp
+  template:
+    metadata:
+      labels:
+        app: django-hp
+    spec:
+      containers:
+        - name: django_hp
+          image: docker.io/sh1zik/django_hp:latest  
+          ports:
+            - containerPort: 80 

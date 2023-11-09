@@ -19,5 +19,3 @@ jobs:
       - uses: Azure/k8s-set-context@v3
         with:
           kubeconfig: ~/.kube/config
-
-      
