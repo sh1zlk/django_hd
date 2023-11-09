@@ -24,6 +24,6 @@ jobs:
     - name: Deploy Helm Chart
 
       run: |
-        helm upgrade --install django_hp ./Helm
+        helm upgrade --install -n=django_hp django_hp ./Helm
       env:
         KUBE_CONFIG: ~/.kube/config
