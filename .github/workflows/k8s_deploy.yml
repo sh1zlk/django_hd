@@ -26,7 +26,9 @@ jobs:
     - name: Add nginx ingress
 
       run: |
-        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm repo update
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm install cert-manager jetstack/cert-manager \
+        --namespace cert-manager \
+        --version v1.6.1 && helm repo update
 
     - name: Deploy Helm Chart
 

@@ -4,20 +4,20 @@ metadata:
   name: django-hp-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt-prod 
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
-    - hosts:
-        - devopsaz.fun 
-      secretName: django-hp-secret
+  - hosts:
+    - devopsaz.fun
+    secretName: letsencrypt-tls
   rules:
-    - host: devopsaz.fun
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: django-hp-ingress
-                port:
-                  number: 80
+  - host: devopsaz.fun
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: django-hp-ingress
+            port:
+              number: 80
