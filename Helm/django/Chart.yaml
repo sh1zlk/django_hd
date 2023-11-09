@@ -1,5 +1,5 @@
 apiVersion: v2
-name: my-djago_hp
+name: my-djago-hp
 description: Helm chart for deploy my django app
 version: 0.1.0
 appVersion: 1.0
