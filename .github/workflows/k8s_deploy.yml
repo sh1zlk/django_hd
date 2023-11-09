@@ -23,10 +23,10 @@ jobs:
         token: ${{ secrets.TOKEN_GH }}
       id: install
 
-    - name: Add nginx ingress
+    - name: Add helm repo
 
       run: |
-        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm install cert-manager jetstack/cert-manager \
+        helm install cert-manager jetstack/cert-manager \
         --namespace cert-manager \
         --version v1.6.1 && helm repo update
 
