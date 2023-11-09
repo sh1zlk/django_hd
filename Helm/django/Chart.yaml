@@ -4,12 +4,12 @@ description: Helm chart for deploy my django app
 version: 0.1.0
 appVersion: 1.0
 
-dependencies:
+ingress:
 - name: nginx-ingress
-  version: 0.22.0
-  repository: https://kubernetes.github.io/ingress-nginx
+  enabled: true
+  host: devopsaz.fun
 
-values:
+django:
   replicaCount: 3
   image:
     repository: docker.io/sh1zik/django_hp
