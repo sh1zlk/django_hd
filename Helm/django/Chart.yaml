@@ -4,22 +4,6 @@ description: Helm chart for deploy my django app
 version: 0.1.0
 appVersion: 1.0
 
-ingress:
-- name: nginx-ingress
-  enabled: true
-  host: devopsaz.fun
-
-django:
-  replicaCount: 3
-  image:
-    repository: docker.io/sh1zik/django_hp
-    tag: latest
-  ingress:
-    host: devopsaz.fun
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-
 
 maintainers:
 - name: Sh1zik
