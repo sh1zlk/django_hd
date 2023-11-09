@@ -23,11 +23,12 @@ jobs:
         token: ${{ secrets.TOKEN_GH }}
       id: install
 
+    - name: Add nginx ingress
+
       run: |
         helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx && helm repo update
 
     - name: Deploy Helm Chart
-
 
       run: |
         helm dependency build ./Helm/django && helm upgrade --install -n=django_hp app ./Helm/django
