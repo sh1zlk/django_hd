@@ -9,13 +9,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: azure/login@v1
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
+    - uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-      - run: az aks get-credentials --resource-group django_hp --name django-helpdesk
+    - run: az aks get-credentials --resource-group django_hp --name django-helpdesk
 
+    - uses: Azure/k8s-set-context@v3
 
-      - uses: Azure/k8s-set-context@v3
-        with:
-          kubeconfig: ~/.kube/config
+      with:
+        kubeconfig: ~/.kube/config
+
+    - uses: azure/setup-helm@v3
+      with:
+        version: 'latest'
+        token: ${{ secrets.TOKEN_GH }}
+      id: install
+
+    - name: Deploy Helm Chart
+
+      run: |
+        helm upgrade --install django_hp ./Helm
+      env:
+        KUBE_CONFIG: ~/.kube/config
