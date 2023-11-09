@@ -31,6 +31,6 @@ jobs:
     - name: Deploy Helm Chart
 
       run: |
-        helm dependency build ./Helm/django && helm upgrade --install -n=django_hp app ./Helm/django
+        helm dependency build ./Helm/django && helm upgrade --install -n=django_hp app --namespace django_hp --create-namespace ./Helm/django
       env:
         KUBE_CONFIG: ~/.kube/config
