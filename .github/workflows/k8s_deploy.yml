@@ -28,6 +28,7 @@ jobs:
 
     - name: Deploy Helm Chart
 
+
       run: |
         helm dependency build ./Helm/django && helm upgrade --install -n=django_hp app ./Helm/django
       env:
