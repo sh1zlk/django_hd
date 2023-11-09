@@ -4,7 +4,7 @@ ARG PYTHON_VERSION=3.11.5-slim-bookworm
 FROM python:${PYTHON_VERSION} as python
 
 FROM python as python-build-stage
-
+EXPOSE 8080
 # Install apt packages
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
