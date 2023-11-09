@@ -14,7 +14,7 @@ spec:
         app: django-hp
     spec:
       containers:
-        - name: django_hp
+        - name: django-hp
           image: docker.io/sh1zik/django_hp:latest  
           ports:
             - containerPort: 80 
