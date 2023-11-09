@@ -13,4 +13,11 @@ jobs:
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
 
-      - run: az aks get-credentials --resource-group django_hp --name django-helpdesk && echo $(cat ~/.kube/config)
+      - run: az aks get-credentials --resource-group django_hp --name django-helpdesk
+
+
+    - uses: Azure/k8s-set-context@v3
+      with:
+        kubeconfig: ~/.kube/config
+
+      
