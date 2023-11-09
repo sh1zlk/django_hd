@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my_django_hp
+  name: my-django-hp
   namespace: django-hp
 spec:
   replicas: 2 
