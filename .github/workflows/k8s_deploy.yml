@@ -27,7 +27,7 @@ jobs:
       run: |
          helm repo add jetstack https://charts.jetstack.io && \
          helm repo update && \
-         helm install cert-manager jetstack/cert-manager --version v1.13.2
+         helm install cert-manager jetstack/cert-manager --namespace django-hp --create-namespace --version v1.13.2
       
     - name: Add helm repo
       
