@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "devopsaz.fun"
+    - devopsaz.fun
     secretName: tls-secret
   rules:
-  - host: "devopsaz.fun"
+  - host: devopsaz.fun
     http:
       paths:
       - path: /
