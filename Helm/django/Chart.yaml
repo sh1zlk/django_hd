@@ -11,12 +11,6 @@ dependencies:
   alias: cert-manager
   condition: cert-manager.enabled
 
-- name: nginx-ingress
-  version: 4.8.3
-  repository: https://kubernetes.github.io/ingress-nginx
-  alias: nginx-ingress
-
-
 maintainers:
 - name: Sh1zik
   email: andriykolomiec218@gmail.com
