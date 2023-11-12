@@ -11,3 +11,15 @@ spec:
     port: 80
     targetPort: 8080
   type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadb
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: loadb
+  type: LoadBalancer
