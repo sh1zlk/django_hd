@@ -33,6 +33,6 @@ jobs:
     - name: Deploy Helm Chart
 
       run: |
-        helm upgrade --install -n=django-hp django-app --namespace django-hp --create-namespace ./Helm/django
+        helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace ./Helm/django
       env:
         KUBE_CONFIG: ~/.kube/config
