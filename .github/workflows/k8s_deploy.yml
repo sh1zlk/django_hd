@@ -15,7 +15,7 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    - run: az aks get-credentials --resource-group django_hp --name django-helpdesk
+    - run: az aks get-credentials --resource-group django-helpdesk --name practice-aks-cluster
 
     - uses: azure/setup-helm@v3
       with:
