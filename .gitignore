@@ -13,7 +13,11 @@ docs/doctrees/*
 *.swp
 .idea
 .tox/**
-
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+test.tf
+terraform.tfstate.backup
 # ignore demo attachments that user might have added
 helpdesk/attachments/
 demo/demodesk/media/helpdesk/attachments/*
