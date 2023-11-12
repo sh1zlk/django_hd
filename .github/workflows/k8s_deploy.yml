@@ -38,7 +38,7 @@ jobs:
     - name: Deploy Helm Chart
 
       run: |
-        helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=$DNS_LABEL \
+       helm dependency build ./Helm/django  && helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=$DNS_LABEL \
         --set controller.service.loadBalancerIP=$STATIC_IP \
         --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz ./Helm/django 
       env:
