@@ -25,21 +25,18 @@ jobs:
 
     - name: Add cert-manager
       run: |
-         helm repo add jetstack https://charts.jetstack.io || true && \
-         helm repo update || true && \
-         helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.2 || true
-      
+        helm repo add jetstack https://charts.jetstack.io || true && \
+        helm repo update || true && \
+        helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.2 || true
+
     - name: Add helm repo
-      
+
       run: |
         helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx || true && \
         helm install ingress-nginx ingress-nginx/ingress-nginx --namespace django-hp --create-namespace || true
 
     - name: Deploy Helm Chart
 
-      run: |
-       helm dependency build ./Helm/django  && helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"=$DNS_LABEL \
-        --set controller.service.loadBalancerIP=$STATIC_IP \
-        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz ./Helm/django 
+      run: helm dependency build ./Helm/django  && helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace
       env:
         KUBE_CONFIG: ~/.kube/config
