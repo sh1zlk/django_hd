@@ -4,6 +4,7 @@ metadata:
   name: django-hp-ingress
   namespace: django-hp
   annotations:
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
@@ -18,7 +19,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: django-hp-service
+            name: test-ingress
             port:
               number: 80
 
