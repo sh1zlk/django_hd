@@ -17,6 +17,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loadb
+  namespace: django-hp
   ports:
   - port: 80
     targetPort: 80
