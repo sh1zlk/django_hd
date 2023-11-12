@@ -19,7 +19,7 @@ metadata:
   namespace: django-hp
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
   selector:
     app: loadb
   type: LoadBalancer
