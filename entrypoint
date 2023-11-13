@@ -12,4 +12,4 @@ python3 demo/manage.py createsuperuser --username admin --email helpdesk@example
 # Install fixtures
 python3 demo/manage.py loaddata emailtemplate.json
 python3 demo/manage.py loaddata demo.json
-
+gunicorn -c docker/gunicorn.py demo.demodesk.config.wsgi:application
