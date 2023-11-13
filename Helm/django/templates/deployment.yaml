@@ -7,14 +7,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: django-hp
+      app.kubernetes.io/name: my-django-hp
+      app.kubernetes.io/component: web
   template:
     metadata:
       labels:
-        app: django-hp
+        app.kubernetes.io/name: my-django-hp
+        app.kubernetes.io/component: web
     spec:
       containers:
       - name: django-hp
         image: docker.io/sh1zik/django_hp:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+          name: http

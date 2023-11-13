@@ -21,7 +21,7 @@ spec:
           service:
             name: test-ingress
             port:
-              number: 80
+              number: http
 
 
 # apiVersion: networking.k8s.io/v1beta1
