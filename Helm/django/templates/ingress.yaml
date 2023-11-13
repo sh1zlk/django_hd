@@ -16,4 +16,4 @@ spec:
           service:
             name: test-ingress
             port:
-              name: http
+              number: 80
