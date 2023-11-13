@@ -13,3 +13,5 @@ django-model-utils
 django-cleanup
 oauthlib
 requests_oauthlib
+django-environ==0.8.1
+gunicorn==20.1.0

@@ -4,11 +4,10 @@ ARG PYTHON_VERSION=3.11.5-slim-bookworm
 FROM python:${PYTHON_VERSION} as python
 
 FROM python as python-build-stage
-EXPOSE 8080
+
 # Install apt packages
-RUN apt-get update && apt-get install --no-install-recommends -y \
-  # dependencies for building Python packages
-  build-essential
+RUN apt-get update && apt-get install --no-install-recommends -y build-essential
+
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements.txt ./requirements-dev.txt /
@@ -24,6 +23,7 @@ ARG APP_HOME=/app
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
+EXPOSE 8080
 
 WORKDIR ${APP_HOME}
 
@@ -36,9 +36,12 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 COPY ./entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint && chmod +x /entrypoint
 
+
 FROM python-run-stage AS backend
 
 # copy application code to WORKDIR
 COPY . ${APP_HOME}
 
-ENTRYPOINT ["/entrypoint"]
+# RUN python demo/manage.py collectstatic --noinput
+RUN ./entrypoint
+CMD ["gunicorn", "-c", "docker/gunicorn.py", "demo.demodesk.config.wsgi:application"]
