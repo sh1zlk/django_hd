@@ -23,11 +23,11 @@ jobs:
         token: ${{ secrets.TOKEN_GH }}
       id: install
 
-    - name: Add cert-manager
-      run: |
-        helm repo add jetstack https://charts.jetstack.io || true && \
-        helm repo update || true && \
-        helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.2  --set installCRDs=true || true
+    # - name: Add cert-manager
+    #   run: |
+    #     helm repo add jetstack https://charts.jetstack.io || true && \
+    #     helm repo update || true && \
+    #     helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.13.2  --set installCRDs=true || true
 
     - name: Add helm repo
 
