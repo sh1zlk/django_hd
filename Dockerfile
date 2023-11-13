@@ -43,5 +43,5 @@ FROM python-run-stage AS backend
 COPY . ${APP_HOME}
 
 # RUN python demo/manage.py collectstatic --noinput
-RUN ./entrypoint
+ENTRYPOINT [ "/entrypoint" ]
 CMD ["gunicorn", "-c", "docker/gunicorn.py", "demo.demodesk.config.wsgi:application"]
