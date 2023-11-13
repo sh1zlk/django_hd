@@ -33,7 +33,16 @@ jobs:
 
       run: |
         helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx || true && \
-        helm install ingress-nginx ingress-nginx/ingress-nginx --namespace django-hp --create-namespace || true
+        helm install ingress-nginx ingress-nginx/ingress-nginx --namespace django-hp --create-namespace \
+        --set controller.defaultTLS.secret=some-tls-secret \
+        --set controller.replicaCount=2 \
+        --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+        --set controller.enableCustomResources=true \
+        --set controller.enableTLSPassthrough=true \
+        --set controller.healthStatus=true \
+        --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+        --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux \
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
 
     - name: Deploy Helm Chart
 

@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-website-service
-  namespace: web-app
+  namespace: django-hp
 spec:
   selector:
     app: webapp
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - protocol: TCP
+    port: 80
+    targetPort: 80
   type: ClusterIP

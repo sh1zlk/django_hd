@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-website-deployment
-  namespace: web-app
+  namespace: django-hp
 spec:
   replicas: 1
   selector:
@@ -14,8 +14,8 @@ spec:
         app: webapp
     spec:
       containers:
-        - name: webapp-container
-          image: ghcr.io/fedorenko-m/app_t:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-          - containerPort: 80
+      - name: webapp-container
+        image: ghcr.io/fedorenko-m/app_t:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
