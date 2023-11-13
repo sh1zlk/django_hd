@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: django-hp
-        image: docker.io/sh1zik/django_hp:latest
+        image: ghcr.io/fedorenko-m/app_t:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: http
