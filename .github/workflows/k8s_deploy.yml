@@ -42,7 +42,7 @@ jobs:
         --set controller.healthStatus=true \
         --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
         --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux \
-        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz || true
 
     - name: Deploy Helm Chart
 
