@@ -34,7 +34,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 	&& rm -rf /wheels/
 
 COPY ./entrypoint /entrypoint
-RUN sed -i 's/\r$//g' /entrypoint && chmod +x /entrypoint
+RUN sed -i 's/\r$//g' /entrypoint && chmod +777 /entrypoint
 
 
 FROM python-run-stage AS backend
