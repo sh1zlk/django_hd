@@ -1,7 +1,7 @@
 import os
-name = 'django-hp'
+name = 'django-hp-app'
 bind = '0.0.0.0:80'
-proc_name = 'django-hp'
+proc_name = 'django-hp-app'
 daemon = False
 user = 'root'
 group = 'root'

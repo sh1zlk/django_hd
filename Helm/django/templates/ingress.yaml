@@ -17,6 +17,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: django-hp-service
+            name: http-service
             port:
               number: 80

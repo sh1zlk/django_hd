@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: django-hp-service
   namespace: django-hp
-  labels:
-    app.kubernetes.io/name: django-hp-service
-    app.kubernetes.io/component: web
 spec:
   selector:
     app: django-hp-service
