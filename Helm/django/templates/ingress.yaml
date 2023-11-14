@@ -14,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: test-ingress
+            name: django-hp-service
             port:
               number: 80
