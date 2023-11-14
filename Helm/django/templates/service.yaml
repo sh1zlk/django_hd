@@ -5,7 +5,7 @@ metadata:
   namespace: django-hp
 spec:
   selector:
-    app: django-hp-service
+    app: djangoapp
   ports:
   - protocol: TCP
     port: 80
