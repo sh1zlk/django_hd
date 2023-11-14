@@ -1,13 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-website-service
+  name: django-hp-service
   namespace: django-hp
+  labels:
+    app.kubernetes.io/name: django-hp-service
+    app.kubernetes.io/component: web
 spec:
   selector:
-    app: webapp
+    app: django-hp-service
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
+    targetPort: 8080
   type: ClusterIP

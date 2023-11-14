@@ -1,21 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-website-deployment
+  name: my-django-hp
   namespace: django-hp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app.kubernetes.io/name: my-django-hp
+      app.kubernetes.io/component: web
   template:
     metadata:
       labels:
-        app: webapp
+        app.kubernetes.io/name: my-django-hp
+        app.kubernetes.io/component: web
     spec:
       containers:
-      - name: webapp-container
-        image: ghcr.io/fedorenko-m/app_t:latest
+      - name: django-hp
+        image: docker.io/sh1zik/django_hp:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+          name: http

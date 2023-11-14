@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-website-ingress
+  name: django-hp-ingress
   namespace: django-hp
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: www.example.com
+  - host: devopsaz.fun
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: test-server
+            name: test-ingress
             port:
-              number: 80
+              number: 8080
