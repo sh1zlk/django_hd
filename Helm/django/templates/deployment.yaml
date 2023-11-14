@@ -18,5 +18,5 @@ spec:
         image: docker.io/sh1zik/django_hp:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: http

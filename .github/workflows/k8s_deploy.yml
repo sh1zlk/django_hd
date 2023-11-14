@@ -31,13 +31,9 @@ jobs:
 
     - name: Add helm repo
 
-      run: |
-        helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace django-hp --create-namespace \
-        --set controller.defaultTLS.secret=some-tls-secret \
-        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz || true
-
+      run: helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace django-hp --create-namespace
     - name: Deploy Helm Chart
 
-      run: helm dependency build ./Helm/django  && helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace ./Helm/django
+      run: helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace ./Helm/django
       env:
         KUBE_CONFIG: ~/.kube/config
