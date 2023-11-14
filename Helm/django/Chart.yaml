@@ -4,6 +4,22 @@ description: Helm chart for deploy my django app
 version: 0.1.0
 appVersion: 0.1.0
 
+ingress:
+  enabled: true
+  host: devopsaz.fun
+  pathType: Prefix
+
+djangoapp:
+  enabled: true
+  image:
+    repository: docker.io/sh1zik/django_hp:latest
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 80
+
 maintainers:
 - name: Sh1zik
   email: andriykolomiec218@gmail.com
