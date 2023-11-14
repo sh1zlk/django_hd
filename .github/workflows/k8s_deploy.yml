@@ -31,7 +31,7 @@ jobs:
 
     - name: Add helm repo
 
-      run: helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace django-hp --create-namespace
+      run: helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace django-hp --create-namespace --set rbac.create=true
     - name: Deploy Helm Chart
 
       run: helm upgrade --install -n=django-hp app --namespace django-hp --create-namespace ./Helm/django
