@@ -6,9 +6,13 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: "cloudflare-issuer"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts: 
+    - devopsaz.fun
+    secretName: tls-secret
   rules:
   - host: devopsaz.fun
     http:
@@ -17,6 +21,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: djangoapp
+            name: my-django-hp
             port:
               number: 80

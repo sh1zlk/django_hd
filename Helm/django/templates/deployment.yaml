@@ -7,16 +7,28 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: djangoapp
+      app: my-django-hp
   template:
     metadata:
       labels:
-        app: djangoapp
+        app: my-django-hp
     spec:
       containers:
-      - name: django-hp
+      - name: my-django-hp
         image: docker.io/sh1zik/django_hp:latest
-        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
           name: http
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-django-hp
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: my-django-hp
